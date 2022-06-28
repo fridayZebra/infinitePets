@@ -5,9 +5,10 @@ let ready = false;
 let imagesLoaded = 0;
 let totalImages = 0;
 let photosArray = [];
+let initialLoad = true;
 
 // Unsplash API
-const count = 10;
+const count = 5;
 const apiKey = 'MGb2TzMN5mh7yZQaI6eW1cwIMFi1Sy406pKWUOBUEuI';
 let apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&query=pets&count=${count}`
 
@@ -16,7 +17,8 @@ function imageLoaded() {
   imagesLoaded++;
   if (imagesLoaded === totalImages) {
     ready = true;
-    console.log('ready = ', ready);
+    loader.hidden = true;
+    count = 10;
   }
 }
 
@@ -31,7 +33,6 @@ function setAttributes(element, attributes) {
 function displayPhotos() {
   imagesLoaded = 0;
   totalImages = photosArray.length;
-  console.log('total images', totalImages);
   // run function for each object in photosArray
   photosArray.forEach((photo) => {
     // create <a> to link to unsplash
@@ -81,9 +82,8 @@ async function getPhotos() {
 
 // check to see if scroll is near bottom; load more photos
 window.addEventListener('scroll', () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 900 && ready) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 100 && ready) {
     ready = false;
-    console.log('ready = ', ready);
     getPhotos();
   }
 
