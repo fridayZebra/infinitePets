@@ -16,7 +16,7 @@ html, body {
 
 body {
   font-family: 'Shadows Into Light', cursive;
-  background: lightgray;
+  background: #f5f5f5;
 
 }
 
@@ -36,7 +36,7 @@ h1 {
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(211,211,211,0.8);
+  background: rgba(245,245,245,0.8);
 }
 
 .loader img {
@@ -55,6 +55,7 @@ h1 {
 .image-container img {
   width: 100%;
   margin-top: 10px;
+  border-radius: 15px;
 }
 
 /* Extra small devices (phones, 600px and down) */
