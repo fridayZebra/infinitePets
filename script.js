@@ -7,12 +7,12 @@ let totalImages = 0;
 let photosArray = [];
 
 // Unsplash API
-const count = 5;
+const count = 10;
 const apiKey = 'MGb2TzMN5mh7yZQaI6eW1cwIMFi1Sy406pKWUOBUEuI';
 let apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&query=pets&count=${count}`
 
 // check if all images were loaded
-function imageLoaded(){
+function imageLoaded() {
   imagesLoaded++;
   if (imagesLoaded === totalImages) {
     ready = true;
@@ -55,11 +55,11 @@ function displayPhotos() {
     });
     // event listener; check when each is finished loading
     img.addEventListener('load', imageLoaded);
-    
+
     // put <img> inside <a>, then put both inside imageContainer element
     item.appendChild(img);
     imageContainer.appendChild(item);
-    
+
   });
 
 }
@@ -81,11 +81,12 @@ async function getPhotos() {
 
 // check to see if scroll is near bottom; load more photos
 window.addEventListener('scroll', () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && ready) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 900 && ready) {
     ready = false;
+    console.log('ready = ', ready);
     getPhotos();
   }
-  
+
 });
 
 // onload
